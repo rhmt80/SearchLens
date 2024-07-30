@@ -362,7 +362,7 @@ async function summarizeResults_own_key(results, searchQuery) {
 
     if(!openaiApiKey){
        // console.log("No API key");
-        updateSummary(`<strong>Add your OpenAI API keys to summarize results</strong> (or disable summary) by clicking on the extension icon. <a href="https://www.youtube.com/watch?v=Hzz7V19bVVw" target="_blank">Here's how summaries look like.</a>`);
+        updateSummary(`<strong>Add your OpenAI API keys to summarize results</strong> (or disable summary) by clicking on the extension icon.</a>`);
         return;
         
     }
