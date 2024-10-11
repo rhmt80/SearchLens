@@ -1,48 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SearchLens Extension Settings</title>
   <style>
+    /* Light mode styles */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --input-bg: #f5f5f5;
+      --input-border: #cccccc;
+      --button-bg: #0066cc;
+      --button-text: #ffffff;
+    }
+
+    /* Dark mode styles */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: rgb(58, 58, 60);
+        --text-color: #ffffff;
+        --input-bg: #444444;
+        --input-border: #555555;
+        --button-bg: #66b3ff;
+        --button-text: #000000;
+      }
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    input[type="text"] {
-      width: 300px;
-      padding: 5px;
-      margin-bottom: 10px;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
     }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: var(--input-bg);
+      color: var(--text-color);
+      border: 1px solid var(--input-border);
+      border-radius: 4px;
+    }
+
     button {
-      padding: 5px 10px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .toggle-container {
+      margin-bottom: 15px;
+    }
+
+    .note {
+      font-style: italic;
+      font-size: 14px;
+      margin: 10px 0;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
   <h1>SearchLens Extension Settings</h1>
   
-  <p><label>
-    <input type="checkbox" id="searchToggle"> Enable Search
-  </label></p>
-  <p><label>
-    <input type="checkbox" id="summaryToggle"> Enable Summary
-  </label></p>
-  
-  <p><strong>Enter the websites you want to search (one per line):</strong></p>
-  <p><em>Note</em>: the first website you enter becomes the default one to be searched</p>
-  <textarea id="websites" rows="5" cols="50">
-reddit.com
-ycombinator.com
-</textarea>
-  <br><br>
-  
-  <label for="apiKey">OpenAI API Key:</label>
-  <input type="text" id="apiKey" name="apiKey">
-  
-  <p><em>Note</em>: <strong>Your API key is never saved</strong> (It remains on the client)</p>
-  <br>
+  <div class="toggle-container">
+    <label>
+      <input type="checkbox" id="searchToggle">
+      Enable Search
+    </label>
+  </div>
+
+  <div>
+    <label for="websites"><strong>Enter the url of websites you want to search(one per line):</strong></label>
+    <textarea id="websites"></textarea>
+  </div>
+
+  <p class="note">Note: The first website you enter becomes the default one to be searched</p>
+
   <button id="save">Save</button>
-  
-  
-  <script src="settings.js"></script>
 </body>
+<script src="settings.js"></script>
 </html>
