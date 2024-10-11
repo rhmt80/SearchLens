@@ -1,51 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SearchLens Extension</title>
   <style>
     body {
-      width: 300px;
-      padding: 10px;
-      background-color: rgb(40, 39, 39);
-      color: white;
-      font-family: sans-serif;
+      width: 250px;
+      padding: 12px;
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
     }
+
+    /* Light mode styles */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --link-color: #0066cc;
+    }
+
+    /* Dark mode styles */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: rgb(58, 58, 60);
+        --text-color: #ffffff;
+        --link-color: #66b3ff;
+      }
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
     h1 {
+      font-size: 18px;
+      margin-bottom: 8px;
       text-align: center;
-      font-family: sans-serif;
     }
-    h2 {
-      text-align: center;
-      font-family: sans-serif;
-      font-size: 14px;
-      margin-top: 5px;
+
+    p {
+      font-size: 12px;
+      margin: 8px 0;
+      line-height: 1.4;
     }
+
     a {
-      color: skyblue; /* Sets the link color to skyblue */
+      color: var(--link-color);
+      text-decoration: none;
     }
-    input[type="checkbox"] {
-      margin-right: 5px;
-      font-size: 50px;
-      color: white;
-      font-family: sans-serif;
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .description {
+      font-size: 11px;
+      color: var(--text-color);
+      opacity: 0.8;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <h1>SearchLens</h1>
-  <h2>Supercharge your Google search with summaries from Reddit and beyond</h2>
-  <p><label>
-    <input type="checkbox" id="searchToggle"> Enable Search
-  </label></p>
-  <p><label>
-    <input type="checkbox" id="summaryToggle"> Enable Summary
-  </label></p>
-  <p>To <strong>edit websites</strong> to search, <a href="#" id="openSettings">open extension settings</a></p>
-  <p><label for="apiKey">OpenAI API Key:</label>
-  <input type="text" id="apiKey" name="apiKey">
-  <button id="saveApiKey">Save</button></p>
-  <p><em>Note</em>: <strong>Your API key is never saved</strong> (It remains on the client)</p>
-  
-  <script src="popup.js"></script>
+  <p class="description">Supercharge your Google search with results from Reddit and beyond</p>
+  <p>
+    <label>
+      <input type="checkbox" id="searchToggle">
+      Enable Search
+    </label>
+  </p>
+  <p>
+    To <strong>edit websites</strong> to search, <a href="#" id="openSettings">open extension settings</a>
+  </p>
 </body>
+<script src="popup.js"></script>
 </html>
